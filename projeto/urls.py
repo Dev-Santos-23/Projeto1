@@ -20,13 +20,9 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path
-from django.http import HttpResponse
+from django.urls import path, include
 
-def my_view(request):
-    return HttpResponse("MINHA LINDA STRING")
-    
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sobre/', my_view),
+    path('', include('recipes.urls'))
 ]

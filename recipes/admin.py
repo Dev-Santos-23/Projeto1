@@ -9,4 +9,4 @@ class RecipeAamin(admin.ModelAdmin):
      ... 
       
 admin.site.register(Category, CategoryAdmim)
-    
+     

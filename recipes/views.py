@@ -29,7 +29,7 @@ def home(request):
         'recipes': page_obj,
         'pages': pagination_range
     })
-
+  
 
 def category(request, category_id):
     recipes = get_list_or_404(

@@ -16,7 +16,7 @@ def home(request):
     except ValueError:
         current_page = 1
         
-    paginator = Paginator(recipes,9 )
+    paginator = Paginator(recipes,9)
     page_obj = paginator.get_page(current_page)
     
     pagination_range = make_pagination_range(
@@ -24,10 +24,10 @@ def home(request):
         4,
         current_page
     ) 
-    
+      
     return render(request, 'recipes/pages/home.html', context={
         'recipes': page_obj,
-        'pages': pagination_range
+        'pagination_range': pagination_range
     })
   
 

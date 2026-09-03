@@ -1,5 +1,6 @@
 from unittest import TestCase
 from pagination import make_pagination_range
+from django.test import TestCase
 
 class PaginationTest(TestCase):
     def test_make_pagination_range_returns_a_pagination_range(self):
@@ -93,3 +94,24 @@ class PaginationTest(TestCase):
             current_page = 21,
         )["pagination"]
         self.assertEqual([17, 18, 19, 20], pagination)         
+        
+    def test_if_the_number_of_pages_is_younger_who_or_equal_9(self):
+        response = self.client.get('/')
+            
+        page = response.context['recipes']
+        
+        self.assertLessEqual(len(page.object_list), 9)
+        
+        """
+         1️⃣ Acesse a página "/"
+                ↓
+        2️⃣ Pegue o contexto enviado para o template
+                ↓
+        3️⃣ Pegue "recipes", que é seu page_obj
+                ↓
+        4️⃣ Pegue as receitas daquela página
+                ↓
+        5️⃣ Conte quantas existem
+                ↓
+        6️⃣ Verifique se são ≤ 9
+        """
